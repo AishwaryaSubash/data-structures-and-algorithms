@@ -35,7 +35,7 @@
 
 def minion_game(s):
     comb = {}
-
+    
     def findSubstring(s):
         for i in range(len(s)+1):
             for j in range(i):
