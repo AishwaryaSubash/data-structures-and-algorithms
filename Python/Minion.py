@@ -22,7 +22,7 @@
 #             kevin = kevin + 1
 #         else:
 #             stu = stu + 1
-            
+
 
 # s = input("Enter string: ")
 # s = s.lower()
@@ -33,40 +33,38 @@
 # print(kevin, stu)
 
 
-
 def minion_game(s):
     comb = {}
+
     def findSubstring(s):
         for i in range(len(s)+1):
             for j in range(i):
                 if s[j:i] in comb:
-                    comb[s[j:i]] +=1
+                    comb[s[j:i]] += 1
                 else:
                     comb[s[j:i]] = 1
 
     def calc(comb):
-        kevin=0
-        stu=0
+        kevin = 0
+        stu = 0
         for elem in comb.keys():
             if elem[0] in "aeoiu":
-                kevin+=comb[elem]
+                kevin += comb[elem]
             else:
-                stu+=comb[elem]
-        if kevin>stu:
-            print("Kevin",kevin)
-        elif stu>kevin:
-            print("Stuart",stu)
+                stu += comb[elem]
+        if kevin > stu:
+            print("Kevin", kevin)
+        elif stu > kevin:
+            print("Stuart", stu)
         else:
-            print("Draw")  
-
+            print("Draw")
 
     s = s.lower()
     findSubstring(s)
 
     calc(comb)
-    
+
+
 if __name__ == '__main__':
     s = input()
     minion_game(s)
-
-
