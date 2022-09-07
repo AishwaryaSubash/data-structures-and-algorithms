@@ -53,7 +53,7 @@ def minion_game(s):
             else:
                 stu+=comb[elem]
         if kevin>stu:
-            print("Kevin ",kevin)
+            print("Kevin",kevin)
         elif stu>kevin:
             print("Stuart",stu)
         else:
