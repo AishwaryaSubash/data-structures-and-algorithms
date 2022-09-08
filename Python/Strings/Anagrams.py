@@ -1,10 +1,12 @@
-import string
+#import string
 a = input()
 b = input()
 a = a.lower()
 b = b.lower()
 aele = {}
 bele = {}
+de = 0
+count = 0
 def count(s, d):
     for i in s:
         if i not in d:
@@ -15,9 +17,14 @@ def count(s, d):
 count(a,aele)
 count(b,bele)
 print(aele,bele)
+seta = set(aele.keys())
+setb = set(bele.keys())
+for i in seta:
+    count+=aele[i] 
 # abc = []
 # for letter in string.ascii_lowercase:
 #    abc.append(letter)
+
 
 
 
