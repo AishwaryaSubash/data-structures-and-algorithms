@@ -19,10 +19,9 @@ def substrCount(n, s):
                 if len(s[i:j]) % 2 == 0:
                     if allSame(s[i:j]):
                         l.append(s[i:j])
-                    break
                 else:
                     print(s[i:j])
-                    mid = len(s[i:j])//2
+                    mid = round(len(s[i:j])/2)
                     print(mid)
         
     print(l)
