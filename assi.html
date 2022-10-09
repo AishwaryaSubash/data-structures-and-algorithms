@@ -1,0 +1,140 @@
+<!-- // Q2
+
+// <!DOCTYPE html>
+// <html>
+//   <head>
+//     <title>creating mailing system</title>
+//     <style>
+//       legend {
+//         display: block;
+//         padding-left: 2px;
+//         padding-right: 2px;
+//         border: none;
+//       }
+//     </style>
+//     <script type="text/javascript">
+//       function validate() {
+//         var user = document.getElementById("email").value;
+//         var user2 = document.getElementById("email");
+//         console.log(user);
+//         console.log(user2);
+
+//         var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+//         if (re.test(user)) {
+//           alert("Done");
+//           return true;
+//         } else {
+//           user2.style.border = "red solid 3px";
+//           return false;
+//         }
+
+//         var user3 = document.getElementById("num").value;
+//         var user4 = document.getElementById("num");
+
+//         console.log(user3);
+//         console.log(user4);
+
+//         var ree = /^[7-9][0-9]{9}$/;
+//         if (ree.test(user3)) {
+//           alert("Done");
+//           return true;
+//         } else {
+//           user4.style.border = "green solid 3px";
+//           return false;
+//         }
+//       }
+//     </script>
+//   </head>
+
+//   <body bgcolor="cyan">
+//     <center>
+//       <h1>Email Registration</h1>
+//       <form>
+//         <fieldset style="width: 300px">
+//           <legend>Registation Form</legend>
+//           <table>
+//             <tr>
+//               <input
+//                 type="text"
+//                 placeholder="Firstname"
+//                 maxlength="15"
+//                 id="fname"
+//               />
+//             </tr>
+//             <br /><br />
+//             <tr>
+//               <input
+//                 type="text"
+//                 placeholder="Lastname"
+//                 maxlength="15"
+//                 id="lname"
+//               />
+//             </tr>
+//             <br /><br />
+//             <tr>
+//               <input type="email" placeholder="Email Address" id="email" />
+//             </tr>
+//             <br /><br />
+//             <tr>
+//               <input type="password" placeholder="Password" id="pw" />
+//             </tr>
+//             <br /><br />
+//             <tr>
+//               <input type="password" placeholder="Confirm Password" id="cpw" />
+//             </tr>
+//             <br /><br />
+//             <tr>
+//               <input type="text" placeholder="Contact Number" id="num" />
+//             </tr>
+//             <br /><br />
+//             <tr>
+//               <label>Gender:</label>
+//               <select id="gender">
+//                 <option value="Male">Male</option>
+//                 <option value="Female">Female</option>
+//                 <option value="Other">Other</option>
+//               </select>
+//             </tr>
+//             <br /><br />
+//             <tr>
+//               <input type="submit" onclick="validate()" value="Register" />
+//             </tr>
+//           </table>
+//         </fieldset>
+//       </form>
+//     </center>
+//   </body>
+// </html>
+
+// Q1    -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>creating mailing system</title>
+    <script>
+
+var arr=prompt('Enter an array: ');
+console.log(typeof arr);
+var freq = 1;
+var count = 0;
+var item;
+for (var i=0; i<arr.length; i++)
+{
+        for (var j=i; j<arr.length; j++)
+        {
+                if (arr[i] == arr[j])
+                 count++;
+                if (freq<count)
+                {
+                  freq=count; 
+                  item = arr[i];
+                }
+        }
+        count=0;
+}
+console.log("The most frequent element is: "+item+" ( " + freq +" times )") ;
+</script>
+  <head>
+<html>
