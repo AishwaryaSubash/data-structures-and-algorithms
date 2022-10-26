@@ -108,33 +108,98 @@
 
 // Q1    -->
 
-
 <!DOCTYPE html>
 <html>
   <head>
     <title>creating mailing system</title>
+  </head>
+  <body>
+    <p id="result"></p>
     <script>
-
-var arr=prompt('Enter an array: ');
-console.log(typeof arr);
-var freq = 1;
-var count = 0;
-var item;
-for (var i=0; i<arr.length; i++)
-{
-        for (var j=i; j<arr.length; j++)
-        {
-                if (arr[i] == arr[j])
-                 count++;
-                if (freq<count)
-                {
-                  freq=count; 
-                  item = arr[i];
-                }
+      var arr = [];
+      var size = prompt("Enter size of array: ");
+      for (var a = 0; a < size; a++) {
+        arr[a] = prompt("Enter array element " + (a + 1));
+      }
+      var freq = 1;
+      var count = 0;
+      var item;
+      for (var i = 0; i < arr.length; i++) {
+        for (var j = i; j < arr.length; j++) {
+          if (arr[i] == arr[j]) count++;
+          if (freq < count) {
+            freq = count;
+            item = arr[i];
+          }
         }
-        count=0;
-}
-console.log("The most frequent element is: "+item+" ( " + freq +" times )") ;
-</script>
-  <head>
-<html>
+        count = 0;
+      }
+      console.log(
+        "The most frequent element is: " + item + " ( " + freq + " times )"
+      );
+
+      document.getElementById("result").innerHTML =
+        "The most frequent element is: " + item + " ( " + freq + " times )";
+    </script>
+  </body>
+</html>
+
+<!--Q2-->
+<!DOCTYPE html>
+<html lang="en">
+  <body>
+    <form name="form">
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="username" />
+      <input type="password" name="password" />
+      <input type="text" name="gender" />
+    </form>
+    <button type="submit" onclick="validate()" name="submit">Submit</button>
+    <script type="text/javascript">
+      var ck_name = /^[A-Za-z0-9 ]{3,20}$/;
+      var ck_email =
+        /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+      var ck_username = /^[A-Za-z0-9_]{1,20}$/;
+      var ck_password = /^[A-Za-z0-9!@#$%^&*()_]{6,20}$/;
+      function validate() {
+        form = document.getElementsByName("form")[0];
+        var name = form.name.value;
+        var email = form.email.value;
+        var username = form.username.value;
+        var password = form.password.value;
+        var gender = form.gender.value;
+        var errors = [];
+        if (!ck_name.test(name)) {
+          errors[errors.length] = "You valid Name .";
+        }
+        if (!ck_email.test(email)) {
+          errors[errors.length] = "You must enter a valid email address.";
+        }
+        if (!ck_username.test(username)) {
+          errors[errors.length] = "You valid UserName no special char .";
+        }
+        if (!ck_password.test(password)) {
+          errors[errors.length] = "You must enter a valid Password ";
+        }
+        if (gender == 0) {
+          errors[errors.length] = "Select Gender";
+        }
+        if (errors.length > 0) {
+          reportErrors(errors);
+          return false;
+        }
+        return true;
+      }
+      
+      function reportErrors(errors) {
+        var msg = "Please Enter Valide Data...\n";
+        for (var i = 0; i < errors.length; i++) {
+          var numError = i + 1;
+          msg += "\n" + numError + ". " + errors[i];
+        }
+        alert(msg);
+      }
+    </script>
+  </body>
+</html>
