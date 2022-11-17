@@ -8,15 +8,16 @@ int main()
     for (int i = 0; i < 5; i++)
     {
         int c = 0;
-        for (int j = i; j < 4; j++)
+        for (int j = 0; j < 4; j++)
         {
             if (a[j] <= a[j+1])
             {
                 c++;
             }
-            cout << c << " ";
+            //cout << c << " ";
         }
         int smt = a[i] * c;
+        cout<<smt<<" ";
         if (max < smt)
         {
             max = smt;
