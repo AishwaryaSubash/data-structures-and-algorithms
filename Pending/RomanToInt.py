@@ -16,7 +16,6 @@ def number(l):
         if l[i] in d:
             if i==(len(l)-1):
                 val+=d[l[i]]
-                
             elif d[l[i]]>=d[l[i+1]]:
                 val+=d[l[i]]
             else:

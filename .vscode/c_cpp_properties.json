@@ -3,7 +3,8 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**"
+                "${workspaceFolder}/**",
+                "/usr/include/x86_64-linux-gnu/c++/11"
             ],
             "defines": [
                 "_DEBUG",
@@ -12,6 +13,30 @@
             ],
             "cStandard": "c17",
             "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-arm64",
+            "compilerPath": "/usr/bin/g++"
+        },
+        {
+            "name": "linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64"
+        },
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
             "intelliSenseMode": "windows-msvc-x64"
         }
     ],
