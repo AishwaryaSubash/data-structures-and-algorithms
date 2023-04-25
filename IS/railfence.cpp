@@ -6,7 +6,7 @@ int main()
     int choice;
     do
     {
-        cout << "\n1.Cipher\n2.Decipher\n3.Exit\nEnter Choice: ";
+        cout << "\n1.Cipher\n2.Decipher\n3.Fence pattern\n4.Exit\nEnter Choice: ";
         cin >> choice;
         switch (choice)
         {
@@ -95,7 +95,6 @@ int main()
                 arr[row][col++] = '-';
                 dir_down ? row++ : row--;
             }
-
             int x = 0;
             for (int i = 0; i < k; i++)
             {
@@ -142,9 +141,46 @@ int main()
             cout << "decr: " << dec_res << endl;
             break;
         }
+        case 3:
+        {
+            string txt;
+            string newtxt;
+            char a[100][100];
+            bool dir_d = false;
+            cout << "Enter a text: ";
+            cin.ignore();
+            getline(cin, txt);
+            int keyy;
+            cout << "Enter key: ";
+            cin >> keyy;
+            transform(txt.begin(), txt.end(), txt.begin(), ::toupper);
+            for (int i = 0; i < txt.length(); i++)
+            {
+                if (isalpha(txt[i]))
+                    newtxt += txt[i];
+            }
+            int l = newtxt.length();
+            int row = 0, col = 0;
+            for (int i = 0; i < l; i++)
+            {
+                if (row == 0 || row == keyy - 1)
+                    dir_d = !dir_d;
+                a[row][col++] = newtxt[i];
+                dir_d ? row++ : row--;
+            }
+            for (int i = 0; i < keyy; i++)
+            {
+                for (int j = 0; j < l; j++)
+                {
+                    cout << a[i][j] << " ";
+                }
+                cout << endl;
+            }
+            break;
+        }
 
         default:
             break;
         }
-    } while (choice != 3);
+    } while (choice != 4);
 }

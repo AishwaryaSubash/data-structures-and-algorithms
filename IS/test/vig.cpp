@@ -3,52 +3,60 @@ using namespace std;
 
 int main()
 {
-    string pt = "";
-    string kw = "";
-    string ct = "";
-    vector<vector<char>> matrix;
-    vector<char> alpha;
+
     int ch;
+    string pt;
+    string ct;
+    string kw;
     do
     {
-        cout << endl
-             << " 1.Generation of Key Matrix \n 2.Cipher \n 3.Decipher \n 4.Exit" << endl;
-        cout << "\nEnter option : ";
+        cout << "\n1.Matrix\n2.Cipher\n3.Decipher\n4.Exit";
+        cout << "\nEnter choice:";
         cin >> ch;
-        string newPt = "";
-        string newKw = "";
         switch (ch)
         {
         case 1:
-            for (char i = 'A'; i <= 'Z'; i++)
+        {
+            vector<vector<char>> matrix;
+            matrix.clear();
+            vector<char> v;
+            for (char c = 'A'; c <= 'Z'; c++)
             {
-                alpha.push_back(i);
+                v.push_back(c);
             }
             for (int i = 0; i < 26; i++)
             {
-                matrix.push_back(alpha);
-                char dummy = alpha.front();
-                alpha.erase(alpha.begin());
-                alpha.insert(alpha.end(), dummy);
+                matrix.push_back(v);
+                char c = v.front();
+                v.erase(v.begin());
+                v.push_back(c);
             }
-            for (int i = 0; i < 26; i++)
+            for (int i = 0; i < matrix.size(); i++)
             {
-                for (int j = 0; j < 26; j++)
+                for (int j = 0; j < matrix.at(i).size(); j++)
                 {
                     cout << matrix.at(i).at(j) << " ";
                 }
                 cout << endl;
             }
             break;
+        }
         case 2:
-            newPt = "", newKw = "", ct = "";
-            cout << "Enter Plaintext: ";
+        {
+            string pt = "";
+            cout << "Enter plain text: ";
             cin.ignore();
             getline(cin, pt);
-            cout << "Enter Keyword: ";
+            string kw = "";
+            cout << "Enter keyword: ";
             getline(cin, kw);
+            // cout << kw << endl;
+            string ct = "";
             transform(pt.begin(), pt.end(), pt.begin(), ::toupper);
             transform(kw.begin(), kw.end(), kw.begin(), ::toupper);
+            string newPt = "";
+            string newKw = "";
+
             for (int i = 0; i < pt.length(); i++)
             {
                 if (isalpha(pt[i]))
@@ -63,11 +71,14 @@ int main()
                     newKw += kw[i];
                 }
             }
+            // cout << newPt << " " << newKw;
             while (newKw.length() < newPt.length())
             {
                 newKw += newKw;
             }
             newKw = newKw.substr(0, newPt.length());
+            // cout << newKw;
+
             for (int i = 0; i < newPt.length(); i++)
             {
                 if (int(newPt[i] + newKw[i]) < (91 + 65))
@@ -79,17 +90,24 @@ int main()
                     ct += char(newPt[i] + newKw[i] - 91);
                 }
             }
-            cout << "Ciphertext: " << ct;
+            cout << ct;
             break;
+        }
         case 3:
-            newPt = "", newKw = "", ct = "";
-            cout << "Enter Ciphertext: ";
+        {
+            string pt = "";
+            cout << "Enter plain text: ";
             cin.ignore();
             getline(cin, pt);
-            cout << "Enter Keyword: ";
+            string kw = "";
+            cout << "Enter keyword: ";
             getline(cin, kw);
+            string ct = "";
             transform(pt.begin(), pt.end(), pt.begin(), ::toupper);
             transform(kw.begin(), kw.end(), kw.begin(), ::toupper);
+            string newPt = "";
+            string newKw = "";
+
             for (int i = 0; i < pt.length(); i++)
             {
                 if (isalpha(pt[i]))
@@ -109,11 +127,11 @@ int main()
                 newKw += newKw;
             }
             newKw = newKw.substr(0, newPt.length());
+
             for (int i = 0; i < newPt.length(); i++)
             {
                 if (int(newPt[i] - newKw[i]) >= 0)
                 {
-
                     ct += char(newPt[i] - newKw[i] + 65);
                 }
                 else
@@ -121,9 +139,10 @@ int main()
                     ct += char(newPt[i] - newKw[i] + 91);
                 }
             }
-            cout << "Plaintext is: " << ct;
+            cout << ct;
             break;
         }
+        }
+
     } while (ch != 4);
-    return 0;
 }

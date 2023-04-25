@@ -1,60 +1,271 @@
 #include <bits/stdc++.h>
-// #include "pwvalid.cpp"
+#include "validpasswordcheck.cpp"
 using namespace std;
-
-bool isValidPw(string pw);
-
-int main()
+void addUser()
 {
-    vector<vector<string>> users;
-    int cont = 1;
-    int ch;
-    string un, pw;
     ifstream inputFile;
     ofstream outputFile;
-    do
+    inputFile.open("user.txt");
+    if (inputFile.is_open())
     {
-        cout << "1.Add user\n2.Update Password\n3.Remove user\n4.Authenticate user\nEnter option: ";
-        cin >> ch;
-        switch (ch)
+        string name, password;
+        cout << "Enter Name : ";
+        cin >> name;
+        bool valid = false;
+        while (!valid)
         {
-        case 1:
+            cout << "Enter Password : ";
+            cin >> password;
+            valid = checkPassword(password);
+        }
+        if (valid)
         {
-            cout << "Enter username";
-            cin >> un;
-            if (un.length() <= 8 && un.length() >= 0)
-            {
+            string data = '\n' + name + '|' + password;
+            outputFile.open("user.txt", ios::app);
+            outputFile << data.c_str();
+        }
+    }
+    outputFile.close();
+    inputFile.close();
+}
+void updatePassword()
+{
+    ifstream inputFile;
+    ofstream outputFile;
+    inputFile.open("user.txt");
 
-                cout << "Enter password";
-                cin >> pw;
-                // ! Call pwvalid func
-                // if (isValidPw(pw))
-                if (true)
+    vector<string> v;
+    if (inputFile.is_open())
+    {
+        bool change = false;
+        while (!inputFile.eof())
+        {
+            string line;
+            getline(inputFile, line);
+            v.push_back(line);
+        }
+        string name;
+        cout << "Enter Name : ";
+        cin >> name;
+        for (int j = 0; j < v.size(); j++)
+        {
+            string line = v.at(j);
+            string temp = "";
+
+            for (int i = 0; i < line.length(); i++)
+            {
+                if (line[i] != '|')
                 {
-                    users.push_back({un, pw});
-                    outputFile.open("users.txt");
-                    if (outputFile.is_open())
+                    temp += line[i];
+                }
+                else
+                {
+
+                    if (name.compare(temp) == 0)
                     {
-                        outputFile.write((char *)&un, un.length());
-                        while (inputFile.read((char *)&un, un.length()))
+                        string oldpwd;
+                        bool valid = false;
+                        while (!valid)
                         {
-                            cout << setw(10) << un;
-                            // item.putdata();
+                            cout << "Enter old password : ";
+                            cin >> oldpwd;
+                            string expwd = line.substr(i + 1, line.length());
+                            if (oldpwd.compare(expwd) == 0)
+                            {
+                                valid = true;
+                            }
+                        }
+                        if (valid)
+                        {
+                            v.at(j).erase(v.at(j).begin() + i + 1, v.at(j).begin() + v.at(j).length());
+                            change = true;
+                            string newpwd;
+                            bool check = false;
+                            while (!check)
+                            {
+                                cout << "Enter new password : ";
+                                cin >> newpwd;
+                                check = checkPassword(newpwd);
+                            }
+                            v.at(j) += newpwd;
+                            break;
                         }
                     }
                     else
                     {
-                        cerr << "Unable to update database";
-                        return 1;
+                        break;
                     }
-                    outputFile.close();
+                }
+                if (change)
+                    break;
+            }
+        }
+        if (change)
+        {
+            outputFile.open("user.txt");
+            string all = "";
+            for (int i = 0; i < v.size(); i++)
+            {
+                all += v.at(i) + ((i != v.size() - 1) ? "\n" : "");
+            }
+            outputFile << all;
+        }
+    }
+    inputFile.close();
+    outputFile.close();
+}
+void removeUser()
+{
+    ifstream inputFile;
+    ofstream outputFile;
+    inputFile.open("user.txt");
+    vector<string> v;
+    if (inputFile.is_open())
+    {
+        bool change = false;
+        while (!inputFile.eof())
+        {
+            string line;
+            getline(inputFile, line);
+            v.push_back(line);
+        }
+        string name;
+        cout << "Enter Name : ";
+        cin >> name;
+        for (int j = 0; j < v.size(); j++)
+        {
+            string line = v.at(j);
+            string temp = "";
+
+            for (int i = 0; i < line.length(); i++)
+            {
+                if (line[i] != '|')
+                {
+                    temp += line[i];
+                }
+                else
+                {
+
+                    if (name.compare(temp) == 0)
+                    {
+                        string oldpwd;
+                        bool valid = false;
+                        while (!valid)
+                        {
+                            cout << "Enter password : ";
+                            cin >> oldpwd;
+                            string expwd = line.substr(i + 1, line.length());
+                            if (oldpwd.compare(expwd) == 0)
+                            {
+                                valid = true;
+                            }
+                        }
+                        if (valid)
+                        {
+                            v.erase(v.begin() + j);
+                            change = true;
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+                if (change)
+                    break;
+            }
+        }
+        if (change)
+        {
+            outputFile.open("user.txt");
+            string all = "";
+            for (int i = 0; i < v.size(); i++)
+            {
+                all += v.at(i) + ((i != v.size() - 1) ? "\n" : "");
+            }
+            outputFile << all;
+        }
+    }
+    inputFile.close();
+    outputFile.close();
+}
+void authUser()
+{
+    ifstream inputFile;
+    inputFile.open("user.txt");
+    if (inputFile.is_open())
+    {
+        string name;
+        cout << "Enter Name : ";
+        cin >> name;
+        while (!inputFile.eof())
+        {
+            string line;
+            getline(inputFile, line);
+            string temp = "";
+            for (int i = 0; i < line.length(); i++)
+            {
+                if (line[i] != '|')
+                {
+                    temp += line[i];
+                }
+                else
+                {
+                    if (name.compare(temp) == 0)
+                    {
+                        string oldpwd;
+                        bool valid = false;
+                        while (!valid)
+                        {
+                            cout << "Enter password : ";
+                            cin >> oldpwd;
+                            string expwd = line.substr(i + 1, line.length());
+                            if (oldpwd.compare(expwd) == 0)
+                            {
+                                valid = true;
+                                cout << "Valid";
+                                inputFile.close();
+                                return;
+                            }
+                            else
+                            {
+                                cout << "Invalid! Try Again" << endl;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        break;
+                    }
                 }
             }
-            else
-            {
-                cout << "Username must be less than or equal to 8 characters";
-            }
         }
+    }
+    inputFile.close();
+}
+int main()
+{
+    int choice;
+    do
+    {
+        cout << "1.Add user\n2.Update user\n3.Remove user\n4.Authenticate user\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            addUser();
+            break;
+        case 2:
+            updatePassword();
+            break;
+        case 3:
+            removeUser();
+            break;
+        case 4:
+            authUser();
+            break;
         }
-    } while (cont == 1);
+    } while (choice != 4);
 }

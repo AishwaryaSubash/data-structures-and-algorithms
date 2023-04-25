@@ -1,17 +1,9 @@
 #include <bits/stdc++.h>
 using namespace std;
-
-int main()
+void matrixgeneration(vector<vector<char>> &matrix, string
+                                                        keyword)
 {
-    vector<vector<char>> matrix;
-    string text, keyword;
-    cout << "Enter plain text : ";
-    getline(cin, text);
-    cout << "Enter keyword : ";
-    getline(cin, keyword);
     vector<char> v;
-    transform(keyword.begin(), keyword.end(), keyword.begin(), ::toupper);
-    transform(text.begin(), text.end(), text.begin(), ::toupper);
     for (int i = 0; i < keyword.length(); i++)
     {
         if (isalpha(keyword[i]))
@@ -25,7 +17,8 @@ int main()
             }
             else
             {
-                if (find(v.begin(), v.end(), keyword[i]) == v.end())
+                if (find(v.begin(), v.end(), keyword[i]) ==
+                    v.end())
                 {
                     v.push_back(keyword[i]);
                 }
@@ -53,120 +46,328 @@ int main()
         matrix.push_back(c);
         c.clear();
     }
-    for (vector<char> i : matrix)
+}
+int main()
+{
+    vector<vector<char>> matrix;
+    int ch;
+    do
     {
-        for (char j : i)
+        cout << "\n 1.Generation of Key Matrix \n 2.Cipher \n 3.Decipher \n 4.Exit " << endl;
+        cout
+            << " Enter option : ";
+        cin >> ch;
+        switch (ch)
         {
-
-            cout << j << " ";
-        }
-        cout << endl;
-    }
-    vector<pair<char, char>> p;
-    for (int i = 0; i < text.size(); i += 2)
-    {
-        if (isalpha(text[i]))
+        case 1:
         {
-            char text1 = text[i] == 'J' ? 'I' : text[i];
-            char text2 = text[i + 1] == 'J' ? 'I' : text[i + 1];
-            if (text1 == text2)
+            string keyword;
+            cin.ignore();
+            cout << "Enter keyword : ";
+            getline(cin, keyword);
+            matrix.clear();
+            transform(keyword.begin(), keyword.end(),
+                      keyword.begin(), ::toupper);
+            matrixgeneration(matrix, keyword);
+            for (int i = 0; i < 5; i++)
             {
-                p.push_back({text1, 'X'});
-                i--;
-            }
-            else
-            {
-                if (isalpha(text1) && isalpha(text2))
-                    p.push_back({text1, text2});
-                else
+                for (int j = 0; j < 5; j++)
                 {
-                    if (!isalpha(text2))
+                    cout << matrix.at(i).at(j) << " ";
+                }
+                cout << endl;
+            }
+            break;
+        }
+        case 2:
+        {
+            string text, keyword;
+            cout << "Enter plain text : ";
+            cin.ignore();
+            getline(cin, text);
+            cout << "Enter keyword : ";
+            getline(cin, keyword);
+            matrix.clear();
+            transform(keyword.begin(), keyword.end(),
+                      keyword.begin(), ::toupper);
+            transform(text.begin(), text.end(), text.begin(),
+                      ::toupper);
+            matrixgeneration(matrix, keyword);
+            vector<pair<char, char>> p;
+            for (int i = 0; i < text.size(); i += 2)
+            {
+                if (isalpha(text[i]))
+                {
+                    char text1 = text[i] == 'J' ? 'I' : text[i];
+                    char text2 = text[i + 1] == 'J' ? 'I' : text[i + 1];
+                    if (text1 == text2)
                     {
-                        p.push_back({text1, 'X'});
+                        p.push_back(make_pair(text1, 'X'));
+                        i--;
+                    }
+                    else
+                    {
+                        if (isalpha(text1) && isalpha(text2))
+                            p.push_back(make_pair(text1,
+                                                  text2));
+                        else
+                        {
+                            if (!isalpha(text2))
+                            {
+                                p.push_back(make_pair(text1,
+                                                      'X'));
+                            }
+                        }
                     }
                 }
+                else
+                {
+                    i--;
+                }
             }
-        }
-        else
-        {
-            i--;
-        }
-    }
-    for (pair<char, char> i : p)
-    {
-        cout << i.first << " " << i.second << endl;
-    }
-    vector<int> f;
-    vector<int> l;
-    string ans = "";
-    for (int k = 0; k < p.size(); k++)
-    {
-        for (int i = 0; i < 5; i++)
-        {
-            auto itf = find(matrix.at(i).begin(), matrix.at(i).end(), p.at(k).first);
+            vector<int> f;
+            vector<int> l;
+            string ans = "";
+            for (int k = 0; k < p.size(); k++)
+            {
 
-            auto itl = find(matrix.at(i).begin(), matrix.at(i).end(), p.at(k).second);
-
-            if (itf != matrix.at(i).end() && f.empty())
-            {
-                f.push_back(i);
-                f.push_back(itf - matrix.at(i).begin());
+                int itfj = -1;
+                int itlj = -1;
+                int itfi = -1;
+                int itli = -1;
+                for (int x = 0; x < 5; x++)
+                {
+                    for (int y = 0; y < 5; y++)
+                    {
+                        if (p.at(k).first == matrix.at(x).at(y))
+                        {
+                            itfi = x;
+                            itfj = y;
+                        }
+                        if (p.at(k).second == matrix.at(x).at(y))
+                        {
+                            itli = x;
+                            itlj = y;
+                        }
+                    }
+                    if (itfi != -1 && itfj != -1 && f.empty())
+                    {
+                        f.push_back(itfi);
+                        f.push_back(itfj);
+                    }
+                    if (itli != -1 && itlj != -1 && l.empty())
+                    {
+                        l.push_back(itli);
+                        l.push_back(itlj);
+                    }
+                }
+                if (!f.empty() && !l.empty())
+                {
+                    if (f.front() == l.front())
+                    {
+                        if (f.back() + 1 < 5)
+                        {
+                            ans +=
+                                matrix.at(f.front()).at(f.back() + 1);
+                        }
+                        else
+                        {
+                            ans +=
+                                matrix.at(f.front()).at(0);
+                        }
+                        if (l.back() + 1 < 5)
+                        {
+                            ans +=
+                                matrix.at(l.front()).at(l.back() + 1);
+                        }
+                        else
+                        {
+                            ans +=
+                                matrix.at(l.front()).at(0);
+                        }
+                    }
+                    else if (f.back() == l.back())
+                    {
+                        if (f.front() + 1 < 5)
+                        {
+                            ans += matrix.at(f.front() + 1).at(f.back());
+                        }
+                        else
+                        {
+                            ans += matrix.at(0).at(f.back());
+                        }
+                        if (l.front() + 1 < 5)
+                        {
+                            ans += matrix.at(l.front() + 1).at(l.back());
+                        }
+                        else
+                        {
+                            ans += matrix.at(0).at(f.back());
+                        }
+                    }
+                    else
+                    {
+                        ans +=
+                            matrix.at(f.front()).at(l.back());
+                        ans +=
+                            matrix.at(l.front()).at(f.back());
+                    }
+                    f.clear();
+                    l.clear();
+                }
             }
-            if (itl != matrix.at(i).end() && l.empty())
-            {
-                l.push_back(i);
-                l.push_back(itl - matrix.at(i).begin());
-            }
+            cout << "Cipher Text: " << ans << endl;
+            break;
         }
-        if (!f.empty() && !l.empty())
+        case 3:
         {
-            if (f.front() == l.front())
+            string text, keyword;
+            cout << "Enter cipher text : ";
+            cin.ignore();
+            getline(cin, text);
+            cout << "Enter keyword : ";
+            getline(cin, keyword);
+            matrix.clear();
+            transform(keyword.begin(), keyword.end(),
+                      keyword.begin(), ::toupper);
+            transform(text.begin(), text.end(), text.begin(),
+                      ::toupper);
+            matrixgeneration(matrix, keyword);
+            vector<int> f;
+            vector<int> l;
+            string ans = "";
+            vector<pair<char, char>> p;
+            for (int i = 0; i < text.size(); i += 2)
             {
-                if (f.back() + 1 < 5)
+                if (isalpha(text[i]))
                 {
-                    ans += matrix.at(f.front()).at(f.back() + 1);
+                    char text1 = text[i] == 'J' ? 'I' : text[i];
+                    char text2 = text[i + 1] == 'J' ? 'I' : text[i + 1];
+                    if (text1 == text2)
+                    {
+                        p.push_back(make_pair(text1, 'X'));
+                        i--;
+                    }
+                    else
+                    {
+                        if (isalpha(text1) && isalpha(text2))
+                            p.push_back(make_pair(text1,
+                                                  text2));
+                        else
+                        {
+                            if (!isalpha(text2))
+                            {
+                                p.push_back(make_pair(text1,
+                                                      'X'));
+                            }
+                        }
+                    }
                 }
                 else
                 {
-                    ans += matrix.at(f.front()).at(0);
-                }
-                if (l.back() + 1 < 5)
-                {
-                    ans += matrix.at(l.front()).at(l.back() + 1);
-                }
-                else
-                {
-                    ans += matrix.at(l.front()).at(0);
+                    i--;
                 }
             }
-            else if (f.back() == l.back())
+            for (int k = 0; k < p.size(); k++)
             {
-                if (f.front() + 1 < 5)
+
+                int itfj = -1;
+                int itlj = -1;
+                int itfi = -1;
+                int itli = -1;
+                for (int x = 0; x < 5; x++)
                 {
-                    ans += matrix.at(f.front() + 1).at(f.back());
+                    for (int y = 0; y < 5; y++)
+                    {
+                        if (p.at(k).first ==
+                            matrix.at(x).at(y))
+                        {
+                            itfj = y;
+                            itfi = x;
+                        }
+                        if (p.at(k).second ==
+                            matrix.at(x).at(y))
+                        {
+                            itlj = y;
+                            itli = x;
+                        }
+                    }
                 }
-                else
+                if (itfi != -1 && itfj != -1 &&
+                    f.empty())
                 {
-                    ans += matrix.at(0).at(f.back());
+                    f.push_back(itfi);
+                    f.push_back(itfj);
                 }
-                if (l.front() + 1 < 5)
+                if (itli != -1 && itlj != -1 &&
+                    l.empty())
                 {
-                    ans += matrix.at(l.front() + 1).at(l.back());
+                    l.push_back(itli);
+                    l.push_back(itlj);
                 }
-                else
+                if (!f.empty() && !l.empty())
                 {
-                    ans += matrix.at(0).at(f.back());
+                    if (f.front() == l.front())
+                    {
+                        if (f.back() - 1 >= 0)
+                        {
+                            ans +=
+                                matrix.at(f.front()).at(f.back() - 1);
+                        }
+                        else
+                        {
+                            ans +=
+                                matrix.at(f.front()).at(4);
+                        }
+                        if (l.back() - 1 >= 0)
+                        {
+                            ans +=
+                                matrix.at(l.front()).at(l.back() - 1);
+                        }
+                        else
+                        {
+                            ans +=
+                                matrix.at(l.front()).at(4);
+                        }
+                    }
+                    else if (f.back() == l.back())
+                    {
+                        if (f.front() - 1 >= 0)
+                        {
+                            ans += matrix.at(f.front() -
+                                             1)
+                                       .at(f.back());
+                        }
+                        else
+                        {
+                            ans += matrix.at(4).at(f.back());
+                        }
+                        if (l.front() - 1 >= 0)
+                        {
+                            ans += matrix.at(l.front() -
+                                             1)
+                                       .at(l.back());
+                        }
+                        else
+                        {
+                            ans += matrix.at(4).at(f.back());
+                        }
+                    }
+                    else
+                    {
+                        ans +=
+                            matrix.at(f.front()).at(l.back());
+                        ans +=
+                            matrix.at(l.front()).at(f.back());
+                    }
+                    f.clear();
+                    l.clear();
                 }
             }
-            else
-            {
-                ans += matrix.at(f.front()).at(l.back());
-                ans += matrix.at(l.front()).at(f.back());
-            }
-            f.clear();
-            l.clear();
+            cout << "Plain Text: " << ans << endl;
+            break;
         }
-    }
-    cout << ans << endl;
+        }
+    } while (ch != 4);
     return 0;
 }
