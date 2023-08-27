@@ -17,4 +17,12 @@ int main()
 {
     vector<int> nums = {1, 2, 3};
     vector<vector<int>> ans = perm(nums);
+    for (vector<int> v : ans)
+    {
+        for (int i : v)
+        {
+            cout << i;
+        }
+        cout << endl;
+    }
 }
