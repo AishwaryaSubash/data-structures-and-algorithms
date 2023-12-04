@@ -6,6 +6,7 @@ int main()
     vector<int> nums = {0, 4, 3, 0};
     int target = 0;
 
+
     map<int, int> m;
     map<int, int> ind;
     for (int i = 0; i < nums.size(); i++)
@@ -13,7 +14,6 @@ int main()
         m[nums.at(i)] = 1;
         ind[nums.at(i)] = i;
     }
-    // pair<int,int>ans;
     vector<int> ans;
     for (int i = 0; i < nums.size(); i++)
     {

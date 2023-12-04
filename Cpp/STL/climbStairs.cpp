@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//Fib series
 int fib(int n)
 {
 
@@ -34,7 +35,7 @@ int fib(int n)
 
 int main()
 {
-    int n = 45;
+    int n = 6;
     // cin >> n;
     cout << fib(n);
 }
