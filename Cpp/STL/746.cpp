@@ -3,20 +3,11 @@ using namespace std;
 
 int minCostClimbingStairs(vector<int> &cost)
 {
-    int sum = 0;
-    int current;
-    int index = 0;
-    while (current != cost.at(cost.size() - 1) || current != cost.at(cost.size() - 2))
+    for (int i = 2; i < cost.size(); i++)
     {
-        if (index != cost.size() - 1)
-        {
-
-            current = min(cost.at(index), cost.at(index + 1));
-            sum += current;
-        }
-        cout << sum;
+        cost[i] += min(cost[i - 1], cost[i - 2]);
     }
-    return sum;
+    return min(cost[cost.size() - 1], cost[cost.size() - 2]);
 }
 
 int main()
