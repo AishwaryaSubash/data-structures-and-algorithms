@@ -2752,55 +2752,162 @@ Fax 2447 0690
 `,
     keywords: "about-us administration trust-office",
   },
+
+  /*Campus Life */
   {
-    url: "https://www.svce.ac.in/office-of-the-coe/coe-academics/",
+    url: "https://www.svce.ac.in/student-zone/student-council/",
     content: `
-Regulations
+Overview
+    The Student Council stands as the foremost student body within SVCE, representing a vast community of over 4000 students. Under the dynamic leadership of Mr. SANJIV T S and the steadfast mentorship of Prof. Ganesh Vaidyanathan, the Student Council is at the forefront of pioneering a range of groundbreaking initiatives, each meticulously designed to empower numerous students. At its core, the vision of the Student Council is to guarantee that every individual who graduates from our college emerges as a triumphant and accomplished individual.
 
-    UG Regulation
-        UG (2016)
-        UG (2018)
-        UG (2018A)
-        UG (2022) [Latest]
+Key Activities
+    SVCE Tech Team - For the first time in SVCE history, a 25 member College level Tech Team has been created as a branch of the Student Council. The peer mentoring sessions for fourth year students and technical placement guidance for third year students are the most important projects of the Tech Team
+    Strong Student - Alumni Relations - The Alumni Association and Council have established very strong ties and thus conduct Networking Events, Spotlight Series, and other programs to mutually benefit each other.
+    In charge of smooth conduct of college level events - Freshers Day, Ice breaker session for freshmen, Teachers Day, Sports Day, College Culturals and Student Research Day.
 
-    PG Regulation
-        PG (2018)
-        PG (2018A)
-        PG (2022) [Latest]
+Student Council - (2023 - 2024)
+    MR. SANJIV T S, Final Year B.Tech. (IT)
+    Students President
+    Mobile : 9551449859
+    Email : 2020it0535@svce.ac.in
+
+    MR. MEER THAHIR A A, Final Year B.E. (ME)
+    Vice President
+    Mobile : 9962254904
+    Email : 2020me0108@svce.ac.in
+
+    MR. AADITTYA PRASSAD R, Final Year B.E (ECE)
+    Cultural secretary
+    Mobile : 8667780546
+    Email : 2020ec0837@svce.ac.in
+
+    MR. RAHUL M C, Third Year B.Tech. (IT)
+    General Secretary
+    Mobile : 8870820165
+    Email : 2021it0814@svce.ac.in
+
+    MS. RAAGA PRIYA J K, Third Year B.Tech. (ADS)
+    Joint Secretary
+    Mobile : 9003699981
+    Email : 2021ad0725@svce.ac.in
+
+    MS. BRINDHA S, Third Year B.E. (CSE)
+    Sports Secretary
+    Mobile : 7550122048
+    Email : 2021cs0840@svce.ac.in
+
+    MR. ARYAN SREERAM A, Second Year B.E. (MN)
+    Treasurer
+    Mobile : 9884349275
+    Email : 2022mn0774@svce.ac.in
+
+    MS. ABIRAMI K, Second Year M.Tech (BT)
+    PG REPRESENTATIVE
+    Mobile : 6382836260
+    Email : 2022by0001@svce.ac.in
+
+Executive Committee:
+    MR. JISSHNU H J, Final Year B.Tech. (IT)
+    Member
+    Mobile : 7358222304
+    Email : 2020it0564@svce.ac.in
+
+    MS. VARSHINI K R, Final Year B.Tech. (BT)
+    Member
+    Mobile : 9940642179
+    Email : 2020bt0093@svce.ac.in
+
+Contact :
+    Email : studentcouncil@svce.ac.in
 `,
-    keywords: "academics office-of-the-coe regulations",
+    keywords: "campus-life student-zone student-council",
   },
+
   {
-    url: "",
-    content: ``,
-    keywords: "",
+    url: "https://www.svce.ac.in/student-zone/clubs-societies/",
+    content: `
+List of all clubs in Sri Venkateswara College of Engineering (SVCE) for overall college:
+    1. Red Ribbon Club(RRC)
+    2. Youth Red Cross(YRC)
+    3. Welding Research Cell
+    4. Grievance Redressal Cell
+    5. Industry-Institute Interaction Cell
+    6. Tribology Research Cell
+    7. Women Empowerment Cell(WEC)
+    8. CARE-Eco Club
+    9. National Cadet Corps(NCC)
+    10. National Service Scheme(NSS)
+    11. Enterpreneurship Promotion & Incubation Center(EPIC)
+    12. Quality Managament Center (QMC)
+    13. Institution Innovation Council(IIC SVCE Sriperumbudur)
+    14. தமிழ் மன்றம்
+    15. Centre for National Cyber Safety and Security Standards
+    16. Engineers without border(EWB)
+    17. ISTE Chapter
+    18. CSI-SVCE Students Chapter
+    19. Interdisciplinary Nanotechnology Research Cell
+    20. Music Club
+    21. Photo Club
+    22. Rotract Club
+    23. Automotive Research Cell
+    24. IETE
+    25. IEEE
+    26. Sukalp SVCE
+    27. SVCE Science Club
+    28. Capacity and Skill Development Cell
+    29. Speakers Forum
+    30. Standards Club SVCE
+`,
+    keywords: "campus-life student-zone clubs-societies",
   },
+
   {
-    url: "",
-    content: ``,
-    keywords: "",
-  },
-  {
-    url: "",
-    content: ``,
-    keywords: "",
-  },
-  {
-    url: "",
-    content: ``,
-    keywords: "",
-  },
-  {
-    url: "",
-    content: ``,
-    keywords: "",
-  },
-  {
-    url: "",
-    content: ``,
-    keywords: "",
+    url: "https://www.svce.ac.in/clubs-activities/grievance-redressal-committee/",
+    content: `
+GRIEVANCE REDRESSAL CELL (GRC)
+    The function of the cell is to look into the complaints lodged by any student, and judge its merit. The Grievance cell is also empowered to look into matters of harassment. Anyone with a genuine grievance may approach the department members in person, or in consultation with the Students Council. In case the person is unwilling to appear in self, grievances may be dropped in writing at the letterbox/suggestion box of the Grievance Cell at Administrative Block.
+
+Objective:
+    The objective of the Grievance Cell is to develop a responsive and accountable attitude among all the stakeholders in order to maintain a harmonious educational atmosphere in the institute. A Grievance Cell should be constituted for the Redressal of the problems reported by the Students of the College with the following objectives:
+    Upholding the dignity of the College by ensuring strife free atmosphere in the College through promoting cordial Student-Student relationship and Student-Teacher relationship etc.
+    Encouraging the Students to express their grievances / problems freely and frankly, without any fear of being victimized.
+    Suggestion / complaint Box is installed in front of the Administrative Block in which the Students, who want to remain anonymous, put in writing their grievances and their suggestions for improving the Academics / Administration in the College. 
+    Advising Students of the College to respect the right and dignity of one another and show utmost restraint and patience whenever any occasion of rift arises. 
+    Advising all the Students to refrain from inciting Students against other Students, Teachers and College administration 
+    Advising all staffs to be affectionate to the Students and not behave in a vindictive manner towards any of them for any reason. 
+    Ragging in any form is strictly prohibited in and outside the institution. Any violation of ragging and disciplinary rules should be urgently brought to the notice of the Principal.
+
+MECHANISM FOR REDRESSAL OF GRIEVANCES OF STUDENTS and STAFF
+    The students are the main stakeholders in any institution imparting education, and it is our endeavour to make all efforts to ensure transparency in all the activities at different stages. Taking this spirit in consideration the institute has decided to provide mechanism to students for Redressal of their grievances as under:
+
+    The Grievances may broadly include the following complaints of the aggrieved students
+
+    Academic 
+    Non-Academic
+    Grievance related to Assessment 
+    Grievance related to Victimization 
+    Grievance related to Attendance 
+    Grievance related to charging of fees 
+    Grievance regarding conducting of Examinations 
+    Harassment by colleague students or the teachers etc.
+    It is good to air a grievance rather than to keep it bottled up. Protection of human rights is essential for all round development of an individual’s personality. To realize the primary needs of the students and staff and secure civil liberties for everybody, a Grievance Redressal Cell has been constituted. The cell is indented to find solutions for problems like, (i) Sexual harassment - any kind of physical or mental harassment (ii) Complaints regarding class room teaching - class room management, completion of syllabus, teaching methods, etc., if and when they arise. The Grievance Redressal Cell convenes meetings periodically and takes steps to redress the grievance.
+`,
+    keywords: "campus-life student-zone grievance-redressal-committee",
   },
 ];
 
 console.log(JSON.stringify(extracted));
+
+const fs = require("fs");
+
+const jsonData = JSON.stringify(extracted, null, 2); // null and 2 for pretty formatting
+
+// Write JSON string to a file
+fs.writeFile("data2.json", jsonData, "utf8", (err) => {
+  if (err) {
+    console.error("Error writing to file:", err);
+    return;
+  }
+  console.log("Data has been written to file");
+});
 // console.log(extracted.length);
