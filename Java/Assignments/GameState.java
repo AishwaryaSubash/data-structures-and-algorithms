@@ -15,13 +15,8 @@ public class GameState implements Serializable {
     @Override
     public String toString() {
         return "\n" +
-                "Name : " + name + " \n" +
-                "Email : " + email + " \n" +
-                "Password : " + password;
-        return "GameState{" +
-                "currentLevel=" + currentLevel +
-                ", achievements=" + achievements +
-                ", playerInventory=" + playerInventory +
-                '}';
+                "Current Level : " + currentLevel + " \n" +
+                "Achievements : " + achievements + " \n" +
+                "Player Inventory : " + playerInventory;
     }
 }
