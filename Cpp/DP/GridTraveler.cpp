@@ -1,8 +1,18 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+vector<vector<int>> memory;
+
 // Grid Traveler with Memoization
 // Time: O(m*n); Space: O(m+n)
+int gridTraveler3 (int m, int n, int i=0, int j=0) {
+    if (i>=m || j>=n) return 0;
+    if (i==m-1 || j==n-1) return 1;
+    if (memory.at(i).at(j)) return memory.at(i).at(j);
+    memory.at(i).at(j) = memory.at(i-1).at(j) + memory.at(i).at(j-1);
+    return memory.at(i).at(j);
+}
+
 int gridTraveler2 (int m, int n, map<vector<int>,int> &memo) {
     if (memo.count({m,n}) > 0) return memo[{m,n}];
     if (memo.count({n,m}) > 0) return memo[{n,m}];
@@ -21,7 +31,7 @@ int gridTraveler(int m, int n) {
 }
 
 int main() {
-    int m = 23, n = 12;
+    int m = 3, n = 3;
     map<vector<int>, int> memo;
-    cout << gridTraveler2(m, n, memo);
+    cout << gridTraveler3(m, n, memo);
 }
