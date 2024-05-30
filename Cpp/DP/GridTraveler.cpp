@@ -13,13 +13,6 @@ int gridTraveler3(int m, int n, int i = 0, int j = 0) {
     return dp[i][j] = gridTraveler3(m, n, i+1, j) + gridTraveler3(m, n, i, j+1);
 }
 
-// int gridTraveler3 (int m, int n, int i=0, int j=0) {
-//     if (i>=m || j>=n) return 0;
-//     if (i==m-1 && j==n-1) return 1;
-//     if (memory.at(i).at(j)) return memory.at(i).at(j);
-//     return memory.at(i).at(j) = gridTraveler3(m,n,i+1,j) + gridTraveler3(m,n,i,j+1);
-// }
-
 int gridTraveler2 (int m, int n, map<vector<int>,int> &memo) {
     if (memo.count({m,n}) > 0) return memo[{m,n}];
     if (memo.count({n,m}) > 0) return memo[{n,m}];
