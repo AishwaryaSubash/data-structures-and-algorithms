@@ -1,25 +1,40 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// vector<vector<int>> mergeIntervals()
-// {
-// }
-
-int main()
+vector<vector<int>> mergeIntervals(vector<vector<int>> intervals)
 {
-    vector<vector<int>> intervals = {{1, 3}, {2, 6}, {8, 10}, {15, 18}};
-    vector<int> newpair;
-    for (int i = 1; i < intervals.size(); i++)
+    vector<vector<int>> ans;
+    sort(intervals.begin(), intervals.end());
+    ans.push_back(intervals.at(0));
+    for (int i = 0; i < intervals.size(); i++)
     {
-        if (intervals.at(i - 1).at(1) >= intervals.at(i).at(0))
+        if (ans.empty() || intervals.at(i).at(0) > ans.back().at(1))
         {
-            newpair.push_back(intervals.at(i - 1).at(0));
-            newpair.push_back(intervals.at(i).at(1));
-            intervals.insert(intervals.begin() + i, newpair);
+            ans.push_back(intervals.at(i));
+        }
+        else
+        {
+            ans.back().at(1) = max(ans.back().at(1), intervals.at(i).at(1));
         }
     }
 
-    for (vector<int> v : intervals)
+    for (vector<int> v : ans)
+    {
+        for (int i : v)
+        {
+            cout << i << " ";
+        }
+        cout << endl;
+    }
+    return ans;
+}
+
+int main()
+{
+    vector<vector<int>> intervals = {{1, 3}, {8, 10}, {2, 6}, {15, 18}};
+    vector<vector<int>> newpair = mergeIntervals(intervals);
+
+    for (vector<int> v : newpair)
     {
         for (int i : v)
         {
