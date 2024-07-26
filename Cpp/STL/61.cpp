@@ -14,22 +14,26 @@ ListNode *rotateRight(ListNode *head, int k)
 {
     ListNode *first = head;
     ListNode *second = head;
-
-    while (k > 0 && second != NULL)
-    {
-        second = second->next;
-        k--;
-    }
-    while (second->next != NULL)
+    int length = 0;
+    while (first->next != NULL)
     {
         first = first->next;
+        length++;
+    }
+    first->next = head;
+
+    int i = k % length;
+
+    while (i != 0)
+    {
+        i--;
         second = second->next;
     }
-
-    ListNode *answer = first->next;
-    first->next = NULL;
-    second->next = head;
-    return answer;
+    second = second->next;
+    first = second->next;
+    second->next = NULL;
+    // printf("%d ", second->val);
+    return first;
 }
 
 int main()
