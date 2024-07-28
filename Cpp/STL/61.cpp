@@ -12,9 +12,12 @@ struct ListNode
 
 ListNode *rotateRight(ListNode *head, int k)
 {
+    if (head == NULL || k == 0)
+        return head;
+
     ListNode *first = head;
     ListNode *second = head;
-    int length = 0;
+    int length = 1;
     while (first->next != NULL)
     {
         first = first->next;
@@ -22,17 +25,15 @@ ListNode *rotateRight(ListNode *head, int k)
     }
     first->next = head;
 
-    int i = k % length;
-
+    int i = (k > length) ? k % length : k;
+    printf("%d %d %d\n", k, length, i);
     while (i != 0)
     {
         i--;
         second = second->next;
     }
-    second = second->next;
     first = second->next;
     second->next = NULL;
-    // printf("%d ", second->val);
     return first;
 }
 
@@ -55,15 +56,19 @@ int main()
     // node4->next = node5;
     // node5->next = NULL;
 
-    node1->val = 0;
-    node2->val = 1;
-    node3->val = 2;
+    // node1->val = 0;
+    // node2->val = 1;
+    // node3->val = 2;
+    // node1->next = node2;
+    // node2->next = node3;
+    // node3->next = NULL;
 
+    node1->val = 1;
+    node2->val = 2;
     node1->next = node2;
-    node2->next = node3;
-    node3->next = NULL;
+    node2->next = NULL;
 
-    int k = 4;
+    int k = 1;
     ListNode *head2 = rotateRight(head, k);
 
     while (head2 != NULL)
